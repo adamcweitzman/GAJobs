@@ -25,9 +25,10 @@ $(function() {
 	$("#name").change(function() {
     	globalValue = document.getElementById('name').value;
   		console.log(globalValue);
+  		var category = ($('#category').val());
   		var ref = new Firebase("https://gajobs.firebaseio.com/");
 
-	  	var jobs = ref.child("users");
+	  	var jobs = ref.child(category);
 	    jobs.push(globalValue);
 
 	    ref.on("child_added", function(snapshot, prevChildKey) {
